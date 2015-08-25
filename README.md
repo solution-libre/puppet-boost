@@ -41,7 +41,38 @@ class { 'boost':
 
 ## Usage
 
-ToDo!
+### Install header packages
+
+```puppet
+class { 'boost':
+  devel    => true,
+  packages => {
+    'signals' => {},
+    'system' => {},
+  }
+}
+```
+
+### Install all headers packages and the documentation
+
+```puppet
+class { 'boost':
+  all_devel => true,
+  doc       => true,
+}
+```
+
+### Uninstall a Boost library
+
+```puppet
+class { 'boost':
+  packages => {
+    'signals' => {
+      ensure => 'absent',
+    },
+  }
+}
+```
 
 ## Reference
 
@@ -55,15 +86,15 @@ ToDo!
 
 * boost::install: Handles the packages.
 
-### Parameters
+#### Parameters
 
 The following parameters are available in the `::boost` class:
 
-#### `package_ensure`
+##### `package_ensure`
 
 Tells Puppet whether the Boost packages should be installed, and what version. Valid options: 'present', 'latest', or a specific version number. Default value: 'present'
 
-#### `packages`
+##### `packages`
 
 Tells Puppet which Boost libraries to install. Valid options: hash. Default value: {}
 
