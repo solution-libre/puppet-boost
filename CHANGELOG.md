@@ -1,4 +1,4 @@
-##2015-08-24 - Release 0.1.0
+##2015-08-23 - Release 0.1.0
 ###Summary
 This is the initial release.
 

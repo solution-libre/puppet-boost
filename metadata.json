@@ -1,4 +1,17 @@
 {
+  "name": "echoes-boost",
+  "version": "0.1.0",
+  "author": "Echoes Technologies",
+  "summary": "Puppet module to manage Boost installation",
+  "license": "Apache-2.0",
+  "source": "https://github.com/echoes-tech/puppet-boost",
+  "project_page": "https://github.com/echoes-tech/puppet-boost",
+  "issues_url": "https://github.com/echoes-tech/puppet-boost/issues",
+  "tags": [
+    "cpp",
+    "c++",
+    "libraries"
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
@@ -19,14 +32,16 @@
       "operatingsystem": "Redhat",
       "operatingsystemrelease": [
         "5",
-        "6"
+        "6",
+        "7"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
         "5",
-        "6"
+        "6",
+        "7"
       ]
     }
   ],
@@ -40,18 +55,7 @@
       "version_requirement": "3.x"
     }
   ],
-  "name": "echoes-boost",
-  "version": "0.1.0",
-  "author": "Echoes Technologies",
-  "summary": "Puppet module to manage Boost installation",
-  "license": "Apache-2.0",
-  "source": "https://github.com/echoes-tech/puppet-boost",
-  "project_page": "https://github.com/echoes-tech/puppet-boost",
-  "issues_url": "https://github.com/echoes-tech/puppet-boost/issues",
   "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 1.0.0"
-    }
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
   ]
 }
