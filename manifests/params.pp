@@ -8,6 +8,7 @@ class boost::params {
   $package_ensure = 'present'
   $packages       = {}
 
+  # <OS family handling>
   case $::osfamily {
     'Debian': {
       $prefix                 = 'libboost'
@@ -27,7 +28,8 @@ class boost::params {
               $version = '1.55'
             }
             default: {
-              fail("Unsupported Debian release: ${::lsbdistcodename}")
+              fail("boost supports Debian 6 (squeeze), 7 (wheezy) and 8 \
+(jessie). Detected lsbdistcodename is <${::lsbdistcodename}>.")
             }
           }
         }
@@ -42,27 +44,36 @@ class boost::params {
             'trusty': {
               $version = '1.54'
             }
+            'xenial': {
+              $version = '1.58'
+            }
             default: {
-              fail("Unsupported Ubuntu release: ${::lsbdistcodename}")
+              fail("boost supports Ubuntu 10.04 (lucid), 12.04 (precise), \
+14.04 (trusty) and 16.04 (xenial). Detected lsbdistcodename is \
+<${::lsbdistcodename}>.")
             }
           }
         }
         default: {
-          fail("Unsupported Debian family OS: ${::lsbdistid}")
+          fail("boost supports Debian 6 (squeeze), 7 (wheezy) and 8 (jessie) \
+and Ubuntu 10.04 (lucid), 12.04 (precise), 14.04 (trusty) and 16.04 (xenial). \
+Detected lsbdistcodename is <${::lsbdistcodename}>.")
         }
       }
     }
     'RedHat': {
       $prefix                 = 'boost'
-      $version                = ''
       $suffix                 = ''
       $suffix_dev             = '-devel'
+      $version                = ''
       $all_devel_package_name = "${prefix}${suffix_dev}"
     }
     default: {
-      fail("Unsupported OS family: ${::osfamily}")
+      fail("boost supports osfamilies Debian and RedHat. Detected osfamily is \
+<${::osfamily}>.")
     }
   }
+  # </OS family handling>
 
   $doc_package_name = "${prefix}-doc"
 }

@@ -1,3 +1,5 @@
+# == Define: boost::package
+#
 define boost::package (
   $devel      = false,
   $ensure     = 'present',
