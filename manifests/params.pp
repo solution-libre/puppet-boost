@@ -15,6 +15,7 @@ class boost::params {
       $suffix                 = '.0'
       $suffix_dev             = '-dev'
       $all_devel_package_name = "${prefix}-all${suffix_dev}"
+
       case $::lsbdistid {
         'Debian': {
           case $::lsbdistcodename {
@@ -55,9 +56,8 @@ class boost::params {
           }
         }
         default: {
-          fail("boost supports Debian 6 (squeeze), 7 (wheezy) and 8 (jessie) \
-and Ubuntu 10.04 (lucid), 12.04 (precise), 14.04 (trusty) and 16.04 (xenial). \
-Detected lsbdistcodename is <${::lsbdistcodename}>.")
+          fail("boost supports Debian and Ubuntu. Detected lsbdistcodename is \
+<${::lsbdistid}>.")
         }
       }
     }

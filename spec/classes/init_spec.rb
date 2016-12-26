@@ -131,23 +131,46 @@ describe 'boost', :type => 'class' do
     end
 
     context 'when packages is set to valid hash <\'signals\' => {}>' do
-      let(:params) { { :packages => :signals => {} } }
+      let(:params) do
+        {
+          :packages => {
+            'signals' => {},
+          }
+        }
+      end
 
-      if v[:packages].class == Array
-        v[:packages].each do |pkg|
-          it do
-            should contain_package(pkg).with({
-              'ensure'   => 'present',
-              'provider' => nil,
-            })
+      platforms.sort.each do |k, v|
+        context "#{k}" do
+          let :facts do
+            { :lsbdistcodename           => v[:lsbdistcodename],
+              :osfamily                  => v[:osfamily],
+              :kernelrelease             => v[:release],        # Solaris specific
+              :operatingsystemrelease    => v[:release],        # Linux specific
+              :operatingsystemmajrelease => v[:majrelease],
+              :prefix                    => v[:prefix],
+              :suffix                    => v[:suffix],
+              :suffix_dev                => v[:suffix_dev],
+              :version                   => v[:version],
+            }
           end
-        end
-      else
-        it do
-          should contain_package(v[:packages]).with({
-            'ensure'   => 'present',
-            'provider' => nil,
-          })
+
+          if :packages.class == Hash
+            :packages.each do |key, value|
+              it do
+                should contain_package(key).with({
+                  'ensure'   => 'present',
+                  'provider' => nil,
+                })
+              end
+            end
+          else
+            it do
+              should contain_package(:packages).with({
+                'ensure'   => 'present',
+                'provider' => nil,
+              })
+            end
+          end
         end
       end
     end
@@ -246,7 +269,7 @@ describe 'boost', :type => 'class' do
         :valid   => [{ 'ha' => 'sh' }],
         :invalid => ['string', 3, 2.42, %w(array), true, false, nil],
         :message => 'is not a Hash',
-      }
+      },
       'string' => {
         :name    => %w(package_ensure prefix suffix suffix_dev version),
         :valid   => ['present'],

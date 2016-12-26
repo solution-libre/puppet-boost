@@ -13,7 +13,7 @@ group :development, :unit_tests do
   gem 'puppet-lint',                                      :require => false
   gem 'puppet-lint-absolute_classname-check',             :require => false
   gem 'puppet-lint-alias-check',                          :require => false
-  gem 'puppet-lint-empty_string-check',                   :require => false
+  #gem 'puppet-lint-empty_string-check',                   :require => false
   gem 'puppet-lint-file_ensure-check',                    :require => false
   gem 'puppet-lint-file_source_rights-check',             :require => false
   gem 'puppet-lint-fileserver-check',                     :require => false

@@ -15,13 +15,15 @@ define boost::package (
   validate_string($suffix_dev)
   validate_string($version)
 
-  package { "${prefix}-${title}${version}${suffix}":
-    ensure => $ensure
+  package { $title:
+    ensure => $ensure,
+    name   => "${prefix}-${title}${version}${suffix}",
   }
 
   if $devel {
-    package { "${prefix}-${title}${version}${suffix_dev}":
-      ensure => $ensure
+    package { "${title}-devel":
+      ensure => $ensure,
+      name   => "${prefix}-${title}${version}${suffix_dev}",
     }
   }
 }
