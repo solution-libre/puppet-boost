@@ -42,6 +42,9 @@ class boost::params {
             'trusty': {
               $version = '1.54'
             }
+            'xenial': {
+              $version = '1.58'
+            }
             default: {
               fail("Unsupported Ubuntu release: ${::lsbdistcodename}")
             }
