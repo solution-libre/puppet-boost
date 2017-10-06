@@ -1,9 +1,10 @@
 ## 2016-12-25 - Release 0.2.0
 ### Summary
-This release adds support to Ubuntu Xenial, fixes typo and a bad URL and  adds a lot of test improvements.
+This release adds support to Ubuntu Xenial and Debian Stretch, fixes typo and a bad URL and  adds a lot of test improvements.
 
 #### Features
 - Added support to Ubuntu 16.04.
+- Added support to Debian Stretch.
 
 ### Bugfixes
 - Fixed `all_devel` and `doc` parameters usage.

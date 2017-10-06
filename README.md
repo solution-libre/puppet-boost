@@ -1,21 +1,24 @@
 # boost
 
-[![Build Status](https://travis-ci.org/echoes-tech/puppet-boost.svg?branch=master)](https://travis-ci.org/echoes-tech/puppet-boost)
-[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")](https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/boost&title=Puppet%20module%20to%20manage%20Boost&description=This%20module%20installs%20Boost.&lang=en_GB&category=software "Puppet module to manage Boost installation")
+[![Puppet Forge Version](http://img.shields.io/puppetforge/v/solution-libre/boost.svg)](https://forge.puppetlabs.com/soli/boost)
+[![Puppet Forge Downloads](http://img.shields.io/puppetforge/dt/solution-libre/boost.svg)](https://forge.puppetlabs.com/soli/boost)
+[![Puppet Forge Score](http://img.shields.io/puppetforge/f/solution-libre/boost.svg)](https://forge.puppetlabs.com/soli/boost)
+[![Build Status](https://travis-ci.org/solution-libre/puppet-boost.svg?branch=master)](https://travis-ci.org/solution-libre/puppet-boost)
+
 
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with boost](#setup)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
     * [Beginning with boost](#beginning-with-boost)
-4. [Usage - Configuration options and additional functionality](#usage)
+4. [Usage](#usage)
     * [Install header packages](#install-header-packages)
     * [Install all headers packages and the documentation](#install-all-headers-packages-and-the-documentation)
     * [Uninstall a Boost library](#uninstall-a-boost-library)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-6. [Limitations - OS compatibility, etc.](#limitations)
-7. [Development - Guide for contributing to the module](#development)
+5. [Reference](#reference)
+6. [Limitations](#limitations)
+7. [Development](#development)
 8. [Contributors](#contributors)
 
 ## Overview
@@ -152,13 +155,17 @@ Tells Puppet what is the version part of the Boost package name. Only needed for
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.
 
+## Copyright and License
+
+- Copyright (C) 2017 [Solution Libre SAS](https://www.solution-libre.fr). Code released under the [Apache 2.0](https://raw.githubusercontent.com/solution-libre/puppet-boost/master/LICENSE) license.
+- Copyright (C) 2015 [Echoes Technologies SAS](https://echoes.fr). Code released under the [Apache 2.0](https://raw.githubusercontent.com/echoes-tech/puppet-boost/master/LICENSE) license.
+
 ## Development
 
-[Echoes Technologies](https://echoes.fr) modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.
+[Solution Libre](https://www.solution-libre.fr) modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.
 
-[Fork this module on GitHub](https://github.com/echoes-tech/puppet-boost/fork)
-
+[Fork this module on GitHub](https://github.com/solution-libre/puppet-boost/fork)
 
 ## Contributors
 
-The list of contributors can be found at: https://github.com/echoes-tech/puppet-boost/graphs/contributors
+The list of contributors can be found at: https://github.com/solution-libre/puppet-boost/graphs/contributors
