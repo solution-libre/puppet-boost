@@ -16,36 +16,40 @@ class boost::params {
       $suffix_dev             = '-dev'
       $all_devel_package_name = "${prefix}-all${suffix_dev}"
 
-      case $::lsbdistid {
+      case $::operatingsystem {
         'Debian': {
-          case $::lsbdistcodename {
-            'squeeze': {
+          case $::operatingsystemmajrelease {
+            6: {
               $version = '1.42'
             }
-            'wheezy': {
+            7: {
               $version = '1.49'
             }
-            'jessie': {
+            8: {
               $version = '1.55'
             }
+            9: {
+              $version = '1.62'
+            }
             default: {
-              fail("boost supports Debian 6 (squeeze), 7 (wheezy) and 8 \
-(jessie). Detected lsbdistcodename is <${::lsbdistcodename}>.")
+              fail("boost supports Debian 6 (squeeze), 7 (wheezy), 8 \
+(jessie) and 9 (stretch). Detected operatingsystemmajrelease is \
+<${::lsbdistcodename}>.")
             }
           }
         }
         'Ubuntu': {
-          case $::lsbdistcodename {
-            'lucid': {
+          case $::operatingsystemmajrelease {
+            '10.04': {
               $version = '1.42'
             }
-            'precise': {
+            '12.04': {
               $version = '1.46'
             }
-            'trusty': {
+            '14.04': {
               $version = '1.54'
             }
-            'xenial': {
+            '16.04': {
               $version = '1.58'
             }
             default: {
@@ -56,7 +60,7 @@ class boost::params {
           }
         }
         default: {
-          fail("boost supports Debian and Ubuntu. Detected lsbdistcodename is \
+          fail("boost supports Debian and Ubuntu. Detected operatingsystem is \
 <${::lsbdistid}>.")
         }
       }

@@ -31,6 +31,16 @@ describe 'boost', :type => 'class' do
         :suffix_dev        => '-dev',
         :version           => '1.55',
       },
+    'debian9' =>
+      { :osfamily          => 'Debian',
+        :release           => '9.0',
+        :majrelease        => '9',
+        :lsbdistcodename   => 'stretch',
+        :prefix            => 'libboost',
+        :suffix            => '.0',
+        :suffix_dev        => '-dev',
+        :version           => '1.62',
+      },
     'el5' =>
       { :osfamily          => 'RedHat',
         :release           => '5.0',
@@ -206,7 +216,7 @@ describe 'boost', :type => 'class' do
       it 'should fail' do
         expect do
           should contain_class('boost')
-        end.to raise_error(Puppet::Error, /boost supports Debian 6 \(squeeze\), 7 \(wheezy\) and 8 \(jessie\). Detected lsbdistcodename is <etch>\./)
+        end.to raise_error(Puppet::Error, /boost supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\). Detected lsbdistcodename is <etch>\./)
       end
     end
 
