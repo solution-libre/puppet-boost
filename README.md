@@ -1,9 +1,7 @@
 # boost
 
-[![Build Status](https://travis-ci.org/echoes-tech/puppet-boost.svg?branch=master)]
-(https://travis-ci.org/echoes-tech/puppet-boost)
-[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")]
-(https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/boost&title=Puppet%20module%20to%20manage%20Boost&description=This%20module%20installs%20Boost.&lang=en_GB&category=software "Puppet module to manage Boost installation")
+[![Build Status](https://travis-ci.org/echoes-tech/puppet-boost.svg?branch=master)](https://travis-ci.org/echoes-tech/puppet-boost)
+[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")](https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/boost&title=Puppet%20module%20to%20manage%20Boost&description=This%20module%20installs%20Boost.&lang=en_GB&category=software "Puppet module to manage Boost installation")
 
 #### Table of Contents
 
