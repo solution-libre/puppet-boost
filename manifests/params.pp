@@ -18,50 +18,50 @@ class boost::params {
 
       case $::operatingsystem {
         'Debian': {
-          case $::operatingsystemmajrelease {
-            6: {
+          case $::operatingsystemrelease {
+            /^6/: {
               $version = '1.42'
             }
-            7: {
+            /^7/: {
               $version = '1.49'
             }
-            8: {
+            /^8/: {
               $version = '1.55'
             }
-            9: {
+            /^9/: {
               $version = '1.62'
             }
             default: {
               fail("boost supports Debian 6 (squeeze), 7 (wheezy), 8 \
-(jessie) and 9 (stretch). Detected operatingsystemmajrelease is \
-<${::lsbdistcodename}>.")
+(jessie) and 9 (stretch). Detected operatingsystemrelease is \
+<${::operatingsystemrelease}>.")
             }
           }
         }
         'Ubuntu': {
-          case $::operatingsystemmajrelease {
-            '10.04': {
+          case $::operatingsystemrelease {
+            /^10.04/: {
               $version = '1.42'
             }
-            '12.04': {
+            /^12.04/: {
               $version = '1.46'
             }
-            '14.04': {
+            /^14.04/: {
               $version = '1.54'
             }
-            '16.04': {
+            /^16.04/: {
               $version = '1.58'
             }
             default: {
               fail("boost supports Ubuntu 10.04 (lucid), 12.04 (precise), \
-14.04 (trusty) and 16.04 (xenial). Detected lsbdistcodename is \
-<${::lsbdistcodename}>.")
+14.04 (trusty) and 16.04 (xenial). Detected operatingsystemrelease is \
+<${::operatingsystemrelease}>.")
             }
           }
         }
         default: {
           fail("boost supports Debian and Ubuntu. Detected operatingsystem is \
-<${::lsbdistid}>.")
+<${::operatingsystem}>.")
         }
       }
     }

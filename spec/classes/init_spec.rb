@@ -3,6 +3,7 @@ describe 'boost', :type => 'class' do
   platforms = {
     'debian6' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Debian',
         :release           => '6.0',
         :majrelease        => '6',
         :lsbdistcodename   => 'squeeze',
@@ -13,6 +14,7 @@ describe 'boost', :type => 'class' do
       },
     'debian7' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Debian',
         :release           => '7.0',
         :majrelease        => '7',
         :lsbdistcodename   => 'wheezy',
@@ -23,6 +25,7 @@ describe 'boost', :type => 'class' do
       },
     'debian8' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Debian',
         :release           => '8.0',
         :majrelease        => '8',
         :lsbdistcodename   => 'jessie',
@@ -33,6 +36,7 @@ describe 'boost', :type => 'class' do
       },
     'debian9' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Debian',
         :release           => '9.0',
         :majrelease        => '9',
         :lsbdistcodename   => 'stretch',
@@ -73,6 +77,7 @@ describe 'boost', :type => 'class' do
       },
     'ubuntu1004' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Ubuntu',
         :release           => '10.04',
         :majrelease        => '10',
         :lsbdistcodename   => 'lucid',
@@ -83,6 +88,7 @@ describe 'boost', :type => 'class' do
       },
     'ubuntu1204' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Ubuntu',
         :release           => '12.04',
         :majrelease        => '12',
         :lsbdistcodename   => 'precise',
@@ -93,6 +99,7 @@ describe 'boost', :type => 'class' do
       },
     'ubuntu1404' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Ubuntu',
         :release           => '14.04',
         :majrelease        => '14',
         :lsbdistcodename   => 'trusty',
@@ -103,6 +110,7 @@ describe 'boost', :type => 'class' do
       },
     'ubuntu1604' =>
       { :osfamily          => 'Debian',
+        :operatingsystem   => 'Ubuntu',
         :release           => '16.04',
         :majrelease        => '16',
         :lsbdistcodename   => 'xenial',
@@ -119,6 +127,7 @@ describe 'boost', :type => 'class' do
         let :facts do
           { :lsbdistcodename           => v[:lsbdistcodename],
             :osfamily                  => v[:osfamily],
+            :operatingsystem           => v[:operatingsystem],
             :kernelrelease             => v[:release],        # Solaris specific
             :operatingsystemrelease    => v[:release],        # Linux specific
             :operatingsystemmajrelease => v[:majrelease],
@@ -135,8 +144,10 @@ describe 'boost', :type => 'class' do
   describe 'parameter functionality' do
     let(:facts) do
       {
-        :osfamily        => 'Debian',
-        :lsbdistcodename => 'squeeze',
+        :osfamily               => 'Debian',
+        :operatingsystem        => 'Debian',
+        :operatingsystemrelease => '6.0',
+        :lsbdistcodename        => 'squeeze',
       }
     end
 
@@ -154,6 +165,7 @@ describe 'boost', :type => 'class' do
           let :facts do
             { :lsbdistcodename           => v[:lsbdistcodename],
               :osfamily                  => v[:osfamily],
+              :operatingsystem           => v[:operatingsystem],
               :kernelrelease             => v[:release],        # Solaris specific
               :operatingsystemrelease    => v[:release],        # Linux specific
               :operatingsystemmajrelease => v[:majrelease],
@@ -199,14 +211,18 @@ describe 'boost', :type => 'class' do
   describe 'failures' do
     let(:facts) do
       {
-        :osfamily        => 'Debian',
-        :lsbdistcodename => 'squeeze',
+        :osfamily               => 'Debian',
+        :operatingsystem        => 'Debian',
+        :operatingsystemrelease => '6.0',
+        :lsbdistcodename        => 'squeeze',
       }
     end
 
     context 'when major release of Debian is unsupported' do
       let :facts do
         { :osfamily                  => 'Debian',
+          :operatingsystem           => 'Debian',
+          :operatingsystemrelease    => '4.0',
           :operatingsystemmajrelease => '4',
           :lsbdistcodename           => 'etch',
           :boost_version             => '5',
@@ -223,6 +239,8 @@ describe 'boost', :type => 'class' do
     context 'when major release of Ubuntu is unsupported' do
       let :facts do
         { :osfamily                  => 'Debian',
+          :operatingsystem           => 'Ubuntu',
+          :operatingsystemrelease    => '8.04',
           :operatingsystemmajrelease => '8',
           :lsbdistcodename           => 'hardy',
           :boost_version             => '5',
@@ -239,6 +257,8 @@ describe 'boost', :type => 'class' do
     context 'when osfamily is unsupported' do
       let :facts do
         { :osfamily                  => 'Unsupported',
+          :operatingsystem           => 'Unsupported',
+          :operatingsystemrelease    => '9.0',
           :operatingsystemmajrelease => '9',
         }
       end
@@ -256,6 +276,7 @@ describe 'boost', :type => 'class' do
     let(:facts) do
       {
         :osfamily                  => 'Debian',
+        :operatingsystem           => 'Debian',
         :operatingsystemrelease    => '6.0',
         :operatingsystemmajrelease => '6',
         :lsbdistcodename           => 'squeeze',
