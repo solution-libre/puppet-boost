@@ -1,5 +1,6 @@
 require 'spec_helper'
-describe 'boost', :type => 'class' do
+
+describe 'boost::package' do
   platforms = {
     'debian6' =>
       { :osfamily          => 'Debian',
@@ -121,6 +122,8 @@ describe 'boost', :type => 'class' do
       },
   }
 
+  let(:title) { 'signals' }
+
   describe 'with default values for parameters on' do
     platforms.sort.each do |k, v|
       context "#{k}" do
@@ -136,7 +139,12 @@ describe 'boost', :type => 'class' do
 
         it { should compile.with_all_deps }
 
-        it { should contain_class('boost') }
+        it do
+          should contain_package("#{v[:prefix]}-signals#{v[:version]}#{v[:suffix]}").with({
+            'ensure'   => 'present',
+            'provider' => nil,
+          })
+        end
       end
     end
   end
@@ -151,111 +159,31 @@ describe 'boost', :type => 'class' do
       }
     end
 
-    context 'when packages is set to valid hash <\'signals\' => {}>' do
-      let(:params) do
-        {
-          :packages => {
-            'signals' => {},
+    %w(absent present).each do |value|
+      context "with ensure set to valid <#{value}>" do
+        let(:params) do
+          {
+            :ensure => value,
           }
-        }
-      end
-
-      platforms.sort.each do |k, v|
-        context "#{k}" do
-          let :facts do
-            { :lsbdistcodename           => v[:lsbdistcodename],
-              :osfamily                  => v[:osfamily],
-              :operatingsystem           => v[:operatingsystem],
-              :kernelrelease             => v[:release],        # Solaris specific
-              :operatingsystemrelease    => v[:release],        # Linux specific
-              :operatingsystemmajrelease => v[:majrelease],
-              :prefix                    => v[:prefix],
-              :suffix                    => v[:suffix],
-              :suffix_dev                => v[:suffix_dev],
-              :version                   => v[:version],
-            }
-          end
-
-          it do
-            should contain_package("#{v[:prefix]}-signals#{v[:version]}#{v[:suffix]}").with({
-              'ensure'   => 'present',
-              'provider' => nil,
-            })
-          end
+        end
+  
+        it do
+          should contain_package("libboost-signals1.42.0").with({
+            'ensure'   => value,
+            'provider' => nil,
+          })
         end
       end
     end
 
-    context 'when all_devel is set to valid bool <true>' do
-      let(:params) { { :all_devel => true } }
-      it { should contain_package('boost-devel').with_ensure('present') }
-    end
+    context "with devel set to valid bool <true>" do
+      let(:params) { { :devel => true } }
 
-    context 'when doc is set to valid bool <true>' do
-      let(:params) { { :doc => true } }
-      it { should contain_package('boost-doc').with_ensure('present') }
-    end
-  end
-
-  describe 'failures' do
-    let(:facts) do
-      {
-        :osfamily               => 'Debian',
-        :operatingsystem        => 'Debian',
-        :operatingsystemrelease => '6.0',
-        :lsbdistcodename        => 'squeeze',
-      }
-    end
-
-    context 'when major release of Debian is unsupported' do
-      let :facts do
-        { :osfamily                  => 'Debian',
-          :operatingsystem           => 'Debian',
-          :operatingsystemrelease    => '4.0',
-          :operatingsystemmajrelease => '4',
-          :lsbdistcodename           => 'etch',
-          :boost_version             => '5',
-        }
-      end
-
-      it 'should fail' do
-        expect do
-          should contain_class('boost')
-        end.to raise_error(Puppet::Error, /boost supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\). Detected operatingsystemrelease is <4.0>\./)
-      end
-    end
-
-    context 'when major release of Ubuntu is unsupported' do
-      let :facts do
-        { :osfamily                  => 'Debian',
-          :operatingsystem           => 'Ubuntu',
-          :operatingsystemrelease    => '8.04',
-          :operatingsystemmajrelease => '8',
-          :lsbdistcodename           => 'hardy',
-          :boost_version             => '5',
-        }
-      end
-
-      it 'should fail' do
-        expect do
-          should contain_class('boost')
-        end.to raise_error(Puppet::Error, /boost supports Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14.04 \(trusty\) and 16.04 \(xenial\). Detected operatingsystemrelease is <8.04>\./)
-      end
-    end
-
-    context 'when osfamily is unsupported' do
-      let :facts do
-        { :osfamily                  => 'Unsupported',
-          :operatingsystem           => 'Unsupported',
-          :operatingsystemrelease    => '9.0',
-          :operatingsystemmajrelease => '9',
-        }
-      end
-
-      it 'should fail' do
-        expect do
-          should contain_class('boost')
-        end.to raise_error(Puppet::Error, /boost supports osfamilies Debian and RedHat\. Detected osfamily is <Unsupported>\./)
+      it do
+        should contain_package("libboost-signals1.42-dev").with({
+          'ensure'   => 'present',
+          'provider' => nil,
+        })
       end
     end
   end
@@ -264,11 +192,9 @@ describe 'boost', :type => 'class' do
     # set needed custom facts and variables
     let(:facts) do
       {
-        :osfamily                  => 'Debian',
-        :operatingsystem           => 'Debian',
-        :operatingsystemrelease    => '6.0',
-        :operatingsystemmajrelease => '6',
-        :lsbdistcodename           => 'squeeze',
+        :osfamily        => 'Debian',
+        :lsbdistcodename => 'squeeze',
+        :boost_version   => '5',
       }
     end
     let(:validation_params) do
@@ -279,21 +205,21 @@ describe 'boost', :type => 'class' do
 
     validations = {
       'bool_stringified' => {
-        :name    => %w(all_devel devel doc),
+        :name    => %w(devel),
         :valid   => [true, 'true', false, 'false'],
         :invalid => ['invalid', 3, 2.42, %w(array), { 'ha' => 'sh' }, nil],
         :message => '(is not a boolean|Unknown type of boolean)',
       },
-      'hash' => {
-        :name    => %w(packages),
-        :valid   => [{ 'ha' => {} }],
-        :invalid => ['string', 3, 2.42, %w(array), true, false, nil],
-        :message => 'is not a Hash',
+      'regex_file_ensure' => {
+        :name    => %w(ensure),
+        :valid   => %w(present absent),
+        :invalid => ['file', 'directory', 'link', %w(array), { 'ha' => 'sh' }, 3, 2.42, true, false, nil],
+        :message => 'must be \'present\' or \'absent\'',
       },
       'string' => {
-        :name    => %w(package_ensure prefix suffix suffix_dev version),
-        :valid   => ['present'],
-        :invalid => [%w(array), { 'ha' => 'sh' }],
+        :name    => %w(prefix suffix suffix_dev version),
+        :valid   => %w(string),
+        :invalid => [%w(array), { 'ha' => 'sh' }, 3, 2.42, true, false],
         :message => 'is not a string',
       },
     }
