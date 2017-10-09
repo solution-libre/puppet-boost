@@ -122,6 +122,9 @@ describe 'boost::package' do
       },
   }
 
+  let :pre_condition do
+    'include ::boost'
+  end
   let(:title) { 'signals' }
 
   describe 'with default values for parameters on' do
@@ -139,12 +142,7 @@ describe 'boost::package' do
 
         it { should compile.with_all_deps }
 
-        it do
-          should contain_package("#{v[:prefix]}-signals#{v[:version]}#{v[:suffix]}").with({
-            'ensure'   => 'present',
-            'provider' => nil,
-          })
-        end
+        it { should contain_package('signals').with_ensure('present') }
       end
     end
   end
@@ -167,24 +165,14 @@ describe 'boost::package' do
           }
         end
   
-        it do
-          should contain_package("libboost-signals1.42.0").with({
-            'ensure'   => value,
-            'provider' => nil,
-          })
-        end
+        it { should contain_package('signals').with_ensure(value) }
       end
     end
 
-    context "with devel set to valid bool <true>" do
+    context 'with devel set to valid bool <true>' do
       let(:params) { { :devel => true } }
 
-      it do
-        should contain_package("libboost-signals1.42-dev").with({
-          'ensure'   => 'present',
-          'provider' => nil,
-        })
-      end
+      it { should contain_package('signals-devel').with_ensure('present') }
     end
   end
 
@@ -210,14 +198,8 @@ describe 'boost::package' do
         :invalid => ['invalid', 3, 2.42, %w(array), { 'ha' => 'sh' }, nil],
         :message => '(is not a boolean|Unknown type of boolean)',
       },
-      'regex_file_ensure' => {
-        :name    => %w(ensure),
-        :valid   => %w(present absent),
-        :invalid => ['file', 'directory', 'link', %w(array), { 'ha' => 'sh' }, 3, 2.42, true, false, nil],
-        :message => 'must be \'present\' or \'absent\'',
-      },
       'string' => {
-        :name    => %w(prefix suffix suffix_dev version),
+        :name    => %w(ensure prefix suffix suffix_dev version),
         :valid   => %w(string),
         :invalid => [%w(array), { 'ha' => 'sh' }, 3, 2.42, true, false],
         :message => 'is not a string',

@@ -176,12 +176,7 @@ describe 'boost', :type => 'class' do
             }
           end
 
-          it do
-            should contain_package("#{v[:prefix]}-signals#{v[:version]}#{v[:suffix]}").with({
-              'ensure'   => 'present',
-              'provider' => nil,
-            })
-          end
+          it { should contain_package('signals').with_ensure('present') }
         end
       end
     end

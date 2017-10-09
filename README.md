@@ -137,19 +137,19 @@ Tells Puppet whether the Boost package should be installed, and what version. Va
 
 ##### `prefix`
 
-Tells Puppet what is the first part of the Boost package name. Valid options: string. Default value: undef
+Tells Puppet what is the first part of the Boost package name. Valid options: string. Default value: varies by operating system
 
 ##### `suffix`
 
-Tells Puppet what is the last part of the Boost package name. Valid options: string. Default value: undef
+Tells Puppet what is the last part of the Boost package name. Valid options: string. Default value: varies by operating system
 
 ##### `suffix_dev`
 
-Tells Puppet what is the last part of the Boost header package name. Valid options: string. Default value: undef
+Tells Puppet what is the last part of the Boost header package name. Valid options: string. Default value: varies by operating system
 
 ##### `version`
 
-Tells Puppet what is the version part of the Boost package name. Only needed for Debian family OSes. Valid options: string. Default value: undef
+Tells Puppet what is the version part of the Boost package name. Only needed for Debian family OSes. Valid options: string. Default value: varies by operating system
 
 ## Limitations
 
