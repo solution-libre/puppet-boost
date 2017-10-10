@@ -30,13 +30,13 @@ define boost::package (
   validate_string($version)
   # </variable validations>
 
-  package { $title:
+  package { "boost-${title}":
     ensure => $ensure,
     name   => "${prefix}-${title}${version}${suffix}",
   }
 
   if $devel_bool {
-    package { "${title}-devel":
+    package { "boost-${title}-devel":
       ensure => $ensure,
       name   => "${prefix}-${title}${version}${suffix_dev}",
     }

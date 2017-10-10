@@ -176,7 +176,7 @@ describe 'boost', :type => 'class' do
             }
           end
 
-          it { should contain_package('signals').with_ensure('present') }
+          it { should contain_package('boost-signals').with_ensure('present') }
         end
       end
     end

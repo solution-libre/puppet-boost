@@ -142,7 +142,7 @@ describe 'boost::package' do
 
         it { should compile.with_all_deps }
 
-        it { should contain_package('signals').with_ensure('present') }
+        it { should contain_package('boost-signals').with_ensure('present') }
       end
     end
   end
@@ -165,14 +165,14 @@ describe 'boost::package' do
           }
         end
   
-        it { should contain_package('signals').with_ensure(value) }
+        it { should contain_package('boost-signals').with_ensure(value) }
       end
     end
 
     context 'with devel set to valid bool <true>' do
       let(:params) { { :devel => true } }
 
-      it { should contain_package('signals-devel').with_ensure('present') }
+      it { should contain_package('boost-signals-devel').with_ensure('present') }
     end
   end
 
@@ -180,9 +180,10 @@ describe 'boost::package' do
     # set needed custom facts and variables
     let(:facts) do
       {
-        :osfamily        => 'Debian',
-        :lsbdistcodename => 'squeeze',
-        :boost_version   => '5',
+        :osfamily               => 'Debian',
+        :operatingsystem        => 'Debian',
+        :operatingsystemrelease => '6.0',
+        :lsbdistcodename        => 'squeeze',
       }
     end
     let(:validation_params) do
