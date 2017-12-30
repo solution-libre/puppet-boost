@@ -155,11 +155,6 @@ Tells Puppet what is the version part of the Boost package name. Only needed for
 
 RedHat and Debian family OSes are officially supported. Tested and built on Debian and CentOS.
 
-## Copyright and License
-
-- Copyright (C) 2017 [Solution Libre SAS](https://www.solution-libre.fr). Code released under the [Apache 2.0](https://raw.githubusercontent.com/solution-libre/puppet-boost/master/LICENSE) license.
-- Copyright (C) 2015 [Echoes Technologies SAS](https://echoes.fr). Code released under the [Apache 2.0](https://raw.githubusercontent.com/echoes-tech/puppet-boost/master/LICENSE) license.
-
 ## Development
 
 [Solution Libre](https://www.solution-libre.fr) modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.

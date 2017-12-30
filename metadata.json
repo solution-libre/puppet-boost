@@ -7,9 +7,11 @@
   "source": "https://github.com/echoes-tech/puppet-boost",
   "project_page": "https://github.com/echoes-tech/puppet-boost",
   "issues_url": "https://github.com/echoes-tech/puppet-boost/issues",
-  "tags": [
-    "cpp",
-    "libraries"
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
@@ -57,7 +59,10 @@
       "version_requirement": ">= 3.0.0 < 5.0.0"
     }
   ],
-  "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
-  ]
+  "tags": [
+    "cpp",
+    "libraries"
+  ],
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.3.0-0-g632fa63"
 }

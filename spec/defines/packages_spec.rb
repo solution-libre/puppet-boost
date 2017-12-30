@@ -202,7 +202,7 @@ describe 'boost::package' do
       'string' => {
         :name    => %w(ensure prefix suffix suffix_dev version),
         :valid   => %w(string),
-        :invalid => [%w(array), { 'ha' => 'sh' }, 3, 2.42, true, false],
+        :invalid => [%w(array), { 'ha' => 'sh' }],
         :message => 'is not a string',
       },
     }
