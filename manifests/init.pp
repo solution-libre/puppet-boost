@@ -43,7 +43,7 @@ class boost (
   validate_string($version)
   # </variable validations>
 
-  anchor { "${module_name}::begin": } ->
-  class { "${module_name}::install": } ->
-  anchor { "${module_name}::end": }
+  anchor { "${module_name}::begin": }
+  -> class { "${module_name}::install": }
+  -> anchor { "${module_name}::end": }
 }
