@@ -1,12 +1,12 @@
 {
-  "name": "echoes-boost",
+  "name": "soli-boost",
   "version": "0.2.0",
-  "author": "Echoes Technologies",
+  "author": "Solution Libre SAS",
   "summary": "Puppet module to manage Boost installation",
   "license": "Apache-2.0",
-  "source": "https://github.com/echoes-tech/puppet-boost",
-  "project_page": "https://github.com/echoes-tech/puppet-boost",
-  "issues_url": "https://github.com/echoes-tech/puppet-boost/issues",
+  "source": "https://github.com/solution-libre/puppet-boost",
+  "project_page": "https://github.com/solution-libre/puppet-boost",
+  "issues_url": "https://github.com/solution-libre/puppet-boost/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
