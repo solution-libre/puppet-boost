@@ -1,3 +1,7 @@
+## 2018-04-12 - Release 0.2.1
+### Summary
+This release benefited from the changes introduced by PDK 1.4.1 (`pdk update`) and changes syntax for Puppet 5.
+
 ## 2018-01-01 - Release 0.2.0
 ### Summary
 This release benefited from the changes introduced by PDK 1.3.0 (`pdk convert`) and adds support to Ubuntu Xenial and Debian Stretch, fixes typo and a bad URL and  adds a lot of test improvements.
