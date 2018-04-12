@@ -12,19 +12,19 @@ class boost (
   $version        = $boost::params::version,
 ) inherits boost::params {
   # <stringified variable handling>
-  if is_string($all_devel) == true {
+  if is_string($all_devel) {
     $all_devel_bool = str2bool($all_devel)
   } else {
     $all_devel_bool = $all_devel
   }
 
-  if is_string($devel) == true {
+  if is_string($devel) {
     $devel_bool = str2bool($devel)
   } else {
     $devel_bool = $devel
   }
 
-  if is_string($doc) == true {
+  if is_string($doc) {
     $doc_bool = str2bool($doc)
   } else {
     $doc_bool = $doc
