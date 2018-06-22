@@ -143,7 +143,7 @@ describe 'boost::package' do
         lsbdistcodename:        'squeeze' }
     end
 
-    %w[absent present].each do |value|
+    ['absent', 'present'].each do |value|
       context "with ensure set to valid <#{value}>" do
         let(:params) do
           {
@@ -178,15 +178,15 @@ describe 'boost::package' do
 
     validations = {
       'bool_stringified' => {
-        name: %w[devel],
+        name: ['devel'],
         valid: [true, 'true', false, 'false'],
-        invalid: ['invalid', 3, 2.42, %w[array], { 'ha' => 'sh' }, nil],
+        invalid: ['invalid', 3, 2.42, ['array'], { 'ha' => 'sh' }, nil],
         message: '(is not a boolean|Unknown type of boolean)',
       },
       'string' => {
-        name: %w[ensure prefix suffix suffix_dev version],
-        valid: %w[string],
-        invalid: [%w[array], { 'ha' => 'sh' }],
+        name: ['ensure', 'prefix', 'suffix', 'suffix_dev', 'version'],
+        valid: ['string'],
+        invalid: [['array'], { 'ha' => 'sh' }],
         message: 'is not a string',
       },
     }

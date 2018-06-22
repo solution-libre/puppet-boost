@@ -252,21 +252,21 @@ describe 'boost', type: 'class' do
 
     validations = {
       'bool_stringified' => {
-        name: %w[all_devel devel doc],
+        name: ['all_devel', 'devel', 'doc'],
         valid: [true, 'true', false, 'false'],
-        invalid: ['invalid', 3, 2.42, %w[array], { 'ha' => 'sh' }, nil],
+        invalid: ['invalid', 3, 2.42, ['array'], { 'ha' => 'sh' }, nil],
         message: '(is not a boolean|Unknown type of boolean)',
       },
       'hash' => {
-        name: %w[packages],
+        name: ['packages'],
         valid: [{ 'ha' => {} }],
-        invalid: ['string', 3, 2.42, %w[array], true, false, nil],
+        invalid: ['string', 3, 2.42, ['array'], true, false, nil],
         message: 'is not a Hash',
       },
       'string' => {
-        name: %w[package_ensure prefix suffix suffix_dev version],
+        name: ['package_ensure', 'prefix', 'suffix', 'suffix_dev', 'version'],
         valid: ['present'],
-        invalid: [%w[array], { 'ha' => 'sh' }],
+        invalid: [['array'], { 'ha' => 'sh' }],
         message: 'is not a string',
       },
     }
