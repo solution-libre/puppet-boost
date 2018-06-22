@@ -1,6 +1,6 @@
 {
   "name": "soli-boost",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Solution Libre SAS",
   "summary": "Puppet module to manage Boost installation",
   "license": "Apache-2.0",
