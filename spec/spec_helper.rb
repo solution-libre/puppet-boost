@@ -28,10 +28,12 @@ end
 
 RSpec.configure do |c|
   c.default_facts = default_facts
-  c.before :each do
-    # set to strictest setting for testing
-    # by default Puppet runs at warning level
-    Puppet.settings[:strict] = :warning
+  if Puppet.version.split('.').first.to_i > 3
+    c.before :each do
+      # set to strictest setting for testing
+      # by default Puppet runs at warning level
+      Puppet.settings[:strict] = :warning
+    end
   end
 end
 
