@@ -1,3 +1,8 @@
+## 2019-01-19 - Release 0.2.3
+### Summary
+
+This release uses PDK 1.8.0 and claims compatibility with Puppet 6.0.
+
 ## 2018-06-22 - Release 0.2.2
 ### Summary
 This release benefited from the changes introduced by PDK 1.6.0 (`pdk update`).
